@@ -1,0 +1,87 @@
+.detalle-pokemon {
+  min-height: calc(100vh - 4rem);
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent 20%),
+    linear-gradient(180deg, #07121e 0%, #020713 100%);
+  padding: 3rem 1rem;
+}
+
+.pokemon-card {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(7, 17, 36, 0.92);
+}
+
+.pokemon-number {
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  color: #7dd3fc;
+}
+
+.pokemon-image {
+  max-width: 100%;
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  padding: 1.2rem;
+}
+
+.pokemon-name {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+.pokemon-tags .badge {
+  font-size: 0.85rem;
+  padding: 0.55em 0.75em;
+  background: rgba(59, 130, 246, 0.16) !important;
+  color: #dbeafe !important;
+}
+
+.detail-label {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.pokemon-moves {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.stat-name {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.stat-value {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: #f8fafc;
+}
+
+.stat-progress {
+  height: 0.55rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+.progress-bar {
+  transition: width 0.6s ease;
+}
+
+.card-body {
+  color: #e2e8f0;
+}
+
+.detalle-pokemon .btn-outline-warning {
+  margin-top: 1.5rem;
+  border-color: rgba(248, 208, 0, 0.9);
+  color: #facc15;
+}
+
+.detalle-pokemon .btn-outline-warning:hover {
+  background: rgba(250, 204, 21, 0.12);
+}

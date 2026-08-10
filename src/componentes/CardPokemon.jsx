@@ -1,6 +1,11 @@
 import { Badge, Button, Card } from 'react-bootstrap';
+import { NavLink, useParams } from 'react-router';
+import { PokemonContext } from '../context/pokemonContext';
+import React from 'react';
 
-const CardPokemon = ({ name, image, types }) => {
+const CardPokemon = ({ name, image, types, id, isFavorite }) => {
+  const { addFavorite } = React.useContext(PokemonContext)
+
   return (
     <Card className="pokemon-card h-100 shadow-sm border-0">
       <div className="card-image-wrapper">
@@ -23,12 +28,21 @@ const CardPokemon = ({ name, image, types }) => {
         </div>
 
         <div className="mt-auto d-grid gap-2">
-          <Button size="sm" variant="primary">
-            Ver detalles
-          </Button>
-          <Button size="sm" variant="outline-dark">
-            Agregar a Favorito
-          </Button>
+          <NavLink to={`/detalle/${id}`}>
+            <Button size="lg" variant="primary"  >
+              Ver detalles
+            </Button>
+          </NavLink  >
+
+
+          {isFavorite != undefined &&
+            <Button size="sm" variant={isFavorite ? 'btn btn-danger' : 'btn btn-dark'} onClick={() => {
+              addFavorite(id)
+            }}>
+              Agregar a Favorito
+            </Button>
+          }
+
         </div>
       </Card.Body>
     </Card>

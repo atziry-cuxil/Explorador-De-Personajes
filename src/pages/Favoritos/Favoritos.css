@@ -1,0 +1,48 @@
+.favoritos-page {
+  min-height: calc(100vh - 4rem);
+  padding: 4rem 2rem;
+  background: radial-gradient(circle at top, rgba(249, 168, 212, 0.12), transparent 22%),
+    linear-gradient(180deg, #07121e 0%, #020813 100%);
+}
+
+.favoritos-header {
+  max-width: 840px;
+  margin: 0 auto 2.5rem;
+}
+
+.favoritos-eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #f9a8d4;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.favoritos-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin: 1rem 0 0.9rem;
+  color: #eff6ff;
+}
+
+.favoritos-copy {
+  color: #cbd5e1;
+  max-width: 620px;
+  line-height: 1.7;
+}
+
+.no-favorites {
+  max-width: 680px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.no-favorites p {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.no-favorites span {
+  color: #cbd5e1;
+}

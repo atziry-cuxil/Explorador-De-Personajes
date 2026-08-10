@@ -2,29 +2,37 @@ import React, { useEffect } from 'react';
 import { Button, Col, Container, Form, Row, Spinner } from 'react-bootstrap';
 import { CardPokemon } from '../../componentes/CardPokemon';
 import { PokemonContext } from '../../context/pokemonContext';
+import { NavLink } from 'react-router';
 import './Personajes.css';
 
 const Personajes = () => {
-    const { getPokemons } = React.useContext(PokemonContext);
-    const [pokemons, setPokemons] = React.useState([]);
-    //const [buscarPoke, setBuscarPoke] = React.useState('')
-    const [pokemonsFilter, setPokemonsFilter] = React.useState([])
-
-    useEffect(() => {
-        const getPoke = async () => {
-            let pokemonsApi = await getPokemons();
-            setPokemons(pokemonsApi);
-            setPokemonsFilter(pokemonsApi)
-        };
-
-        getPoke();
-    }, [getPokemons]);
-
+    const { pokemons, pokemonsFilter, setPokemonsFilter, paginacion } = React.useContext(PokemonContext);
+    const [pages, setPages] = React.useState(0)
 
     const buscador = (event) => {
-        const pokemonEncontrados = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(event.target.value.toLowerCase()))
-        setPokemonsFilter(pokemonEncontrados)
-        //setBuscarPoke(event.target.value)
+        const pokemonEncontrados = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(event.target.value.toLowerCase())).slice(0, 20)
+        //setPokemonsFilter([pokemonEncontrados])
+        if (event.target.value == '') {
+            setPokemonsFilter(paginacion[pages])
+        } else {
+            setPokemonsFilter(pokemonEncontrados)
+        }
+
+    }
+
+    const irAntes = () => {
+        if (pages != 0) {
+            setPages(prev => prev - 1)
+            setPokemonsFilter(paginacion[pages - 1])
+        }
+        console.log(paginacion.length)
+    }
+
+    const irDespues = () => {
+        if (pages <= 52) {
+            setPages(prev => prev + 1)
+            setPokemonsFilter(paginacion[pages + 1])
+        }
     }
 
     return (
@@ -37,6 +45,9 @@ const Personajes = () => {
                     Descubre cada Pokemon, conoce sus tipos y disfruta una experiencia de colección con estilo.
                 </p>
             </div>
+
+            <NavLink to={'/favoritos'} className={'btn btn-dark'} >
+                Ir a Favoritos </NavLink >
 
             <Row className="justify-content-center mb-5">
                 <Col xs={12} md={8} lg={6}>
@@ -54,13 +65,18 @@ const Personajes = () => {
                 </Col>
             </Row>
 
+            <div>
+                <button className='btn btn-dark' onClick={irAntes}>Anterior</button>
+                <button className='btn btn-dark' onClick={irDespues}>Siguiente</button>
+            </div>
+
             <Row className="g-4 justify-content-center">
                 {pokemons.length === 0 ? (
                     <Col xs={12} className="text-center">
                         <Spinner animation="border" variant="light" />
                     </Col>
                 ) : (
-                    pokemonsFilter.map((pokemon) => (
+                    pokemonsFilter?.map((pokemon) => (
                         <Col key={pokemon.name} xs={12} sm={6} md={4} lg={3}>
                             <CardPokemon {...pokemon} />
                         </Col>

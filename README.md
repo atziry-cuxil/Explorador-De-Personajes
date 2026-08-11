@@ -32,5 +32,19 @@ El objetivo del proyecto es permitir que el usuario pueda explorar, buscar y con
 
 Incorporamos funcionalidades de paginación, filtrado, favoritos y visualización de detalles.
 
+Explora los pokemones en :
+
+>https://atziry-cuxil.github.io/Explorador-De-Personajes/
+
+#### Vista previa
+![Vista previa](./public/inicio.png)
+
+![vista previa](./public/personajes.png)
+
+![vista previa](./public/detalles.png)
+
+![vista previa](./public/favoritos.png)
+
+
 
 

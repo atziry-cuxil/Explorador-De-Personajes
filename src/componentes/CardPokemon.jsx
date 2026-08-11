@@ -17,13 +17,13 @@ const CardPokemon = ({ name, image, types, id, isFavorite }) => {
 
         <div className="mb-3 type-badge-group">
           {types.map((type) => (
-            <Badge
+            <Button
               key={type}
               bg="secondary"
               className={`type-badge text-capitalize px-2 py-1 me-2 mb-2 type-${type.toLowerCase()}`}
             >
               {type}
-            </Badge>
+            </Button>
           ))}
         </div>
 

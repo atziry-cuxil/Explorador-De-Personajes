@@ -6,33 +6,32 @@ import { NavLink } from 'react-router';
 import './Personajes.css';
 
 const Personajes = () => {
-    const { pokemons, pokemonsFilter, setPokemonsFilter, paginacion } = React.useContext(PokemonContext);
-    const [pages, setPages] = React.useState(0)
+    const { pokemons, pokemonsFilter, setPokemonsFilter, pages, setPages } = React.useContext(PokemonContext);
+
+    useEffect(() => {
+        setPokemonsFilter(pokemons)
+    }, [pages])
 
     const buscador = (event) => {
         const pokemonEncontrados = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(event.target.value.toLowerCase())).slice(0, 20)
-        //setPokemonsFilter([pokemonEncontrados])
+
         if (event.target.value == '') {
-            setPokemonsFilter(paginacion[pages])
+            setPokemonsFilter(pokemons)
         } else {
             setPokemonsFilter(pokemonEncontrados)
         }
-
     }
 
-    const irAntes = () => {
+    const irAtras = () => {
         if (pages != 0) {
             setPages(prev => prev - 1)
-            setPokemonsFilter(paginacion[pages - 1])
+            setPokemonsFilter(pokemons)
         }
-        console.log(paginacion.length)
     }
 
-    const irDespues = () => {
-        if (pages <= 52) {
-            setPages(prev => prev + 1)
-            setPokemonsFilter(paginacion[pages + 1])
-        }
+    const irAdelante = () => {
+        setPages(prev => pokemons.length < 20 ? prev : prev + 1)
+        setPokemonsFilter(pokemons)
     }
 
     return (
@@ -57,7 +56,6 @@ const Personajes = () => {
                                 type="search"
                                 placeholder="Busca por nombre..."
                                 className="search-input rounded-pill border-0 px-4 py-3"
-                                //value={buscarPoke}
                                 onChange={(event) => buscador(event)}
                             />
                         </div>
@@ -66,8 +64,8 @@ const Personajes = () => {
             </Row>
 
             <div>
-                <button className='btn btn-dark' onClick={irAntes}>Anterior</button>
-                <button className='btn btn-dark' onClick={irDespues}>Siguiente</button>
+                <button className='btn btn-dark' onClick={irAtras}>Anterior</button>
+                <button className='btn btn-dark' onClick={irAdelante}>Siguiente</button>
             </div>
 
             <Row className="g-4 justify-content-center">

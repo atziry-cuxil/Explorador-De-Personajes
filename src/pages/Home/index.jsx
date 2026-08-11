@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 import './Home.css';
 
 const Home = () => {
-    
+
     return (
         <section className="home-hero d-flex align-items-center">
             <Container>
@@ -35,12 +35,11 @@ const Home = () => {
                             </p>
                             <div className="hero-stat-grid">
                                 <div>
-                                    <strong>151</strong>
+                                    <strong>100%</strong>
                                     <p>Pokemones listos</p>
                                 </div>
                                 <div>
-                                    <strong>3</strong>
-                                    <p>Vistas disponibles</p>
+                                    <p>Explora los detalles de cada pokemon</p>
                                 </div>
                                 <div>
                                     <strong>100%</strong>
